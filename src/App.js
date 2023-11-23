@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, SafeAreaView, TouchableOpacity} from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {faHeart} from '@fortawesome/free-solid-svg-icons';
+import {faMagnifyingGlass, faHeart} from '@fortawesome/free-solid-svg-icons';
 import {
   NativeBaseProvider,
   ScrollView,
@@ -27,8 +27,8 @@ class ProductList extends Component {
     this.fetchProducts();
   }
 
-  fetchProducts = () => {
-    fetch(`https://dummyjson.com/products`)
+  fetchProducts = (searchProduct = '') => {
+    fetch(`https://dummyjson.com/products/search?q=${searchProduct}`)
       .then(res => res.json())
       .then(data => {
         this.setState({productList: data.products});
@@ -110,6 +110,10 @@ class ProductList extends Component {
     );
   };
 
+  handleProductSearch = searchProduct => {
+    this.fetchProducts(searchProduct);
+  };
+
   handleProductClick = product => {
     console.log('Tıklanan ürün:', product);
   };
@@ -117,6 +121,21 @@ class ProductList extends Component {
   render() {
     return (
       <NativeBaseProvider>
+        <SafeAreaView style={{margin: 10}}>
+          <Input
+            variant="rounded"
+            placeholder="Dilediğini ara"
+            InputLeftElement={
+              <FontAwesomeIcon
+                icon={faMagnifyingGlass}
+                color="#27272a"
+                style={{marginLeft: 10}}
+              />
+            }
+            onChangeText={this.handleProductSearch}
+          />
+        </SafeAreaView>
+
         <ScrollView style={styles.container}>
           {this.renderProductsRows()}
         </ScrollView>
