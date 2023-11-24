@@ -9,7 +9,7 @@ import {
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import {
   faMagnifyingGlass,
   faHeart,
@@ -27,6 +27,7 @@ import {
   Card,
   Button,
   Radio,
+  Divider,
 } from 'native-base';
 import StarRating from './StarRating';
 
@@ -34,14 +35,14 @@ const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
 const modalConditions = {
-  degerlendirme: [
+  Değerlendirme: [
     '5 yıldız',
     '4 yıldız ve üzeri',
     '3 yıldız ve üzeri',
     '2 yıldız ve üzeri',
   ],
-  fiyat: ['1000 ₺ ve üzeri', '100 ₺ - 1000 ₺', '0 ₺ - 100 ₺'],
-  kategori: [
+  Fiyat: ['1000 ₺ ve üzeri', '100 ₺ - 1000 ₺', '0 ₺ - 100 ₺'],
+  Kategori: [
     'smartphones',
     'laptops',
     'fragrances',
@@ -208,6 +209,15 @@ const ProductList = () => {
     if (selectedButton && modalConditions[selectedButton]) {
       return (
         <View padding={screenWidth * 0.05}>
+          <Text fontSize="lg" fontWeight="bold" color="gray.800">
+            {selectedButton}
+          </Text>
+          <Divider
+            bg="gray.800"
+            opacity="0.2"
+            mt={screenHeight * 0.01}
+            mb={screenHeight * 0.02}
+          />
           <Radio.Group
             defaultValue="1"
             name="myRadioGroup"
@@ -296,7 +306,7 @@ const ProductList = () => {
                 variant="outline"
                 rounded={18}
                 colorScheme="gray.800"
-                onPress={() => handleButtonPress('degerlendirme')}
+                onPress={() => handleButtonPress('Değerlendirme')}
                 endIcon={
                   <FontAwesomeIcon
                     icon={faChevronDown}
@@ -311,7 +321,7 @@ const ProductList = () => {
                 variant="outline"
                 rounded={18}
                 colorScheme="gray.800"
-                onPress={() => handleButtonPress('fiyat')}
+                onPress={() => handleButtonPress('Fiyat')}
                 endIcon={
                   <FontAwesomeIcon
                     icon={faChevronDown}
@@ -326,7 +336,7 @@ const ProductList = () => {
                 variant="outline"
                 rounded={18}
                 colorScheme="gray.800"
-                onPress={() => handleButtonPress('kategori')}
+                onPress={() => handleButtonPress('Kategori')}
                 endIcon={
                   <FontAwesomeIcon
                     icon={faChevronDown}
