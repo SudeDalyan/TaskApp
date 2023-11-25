@@ -116,7 +116,6 @@ const ProductList = () => {
         <Card
           width={screenWidth * 0.46}
           rounded={5}
-          elevation={5}
           backgroundColor="white"
           mb={4}
           padding={0}>
@@ -127,7 +126,6 @@ const ProductList = () => {
             <Card
               width={screenWidth * 0.46}
               rounded={5}
-              elevation={5}
               backgroundColor="white"
               mb={4}
               padding={0}>

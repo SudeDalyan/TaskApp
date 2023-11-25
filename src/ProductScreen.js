@@ -62,7 +62,6 @@ const Design = ({route}) => {
           rounded={5}
           backgroundColor="white"
           padding={0}
-          shadow={2}
           height={screenHeight * 0.8}>
           {/* Ürün kartı içeriği */}
           <VStack space={2} position="relative">
@@ -94,7 +93,6 @@ const Design = ({route}) => {
           rounded={5}
           backgroundColor="white"
           padding={0}
-          shadow={2}
           marginY={5}
           height={screenHeight * 0.1}>
           <VStack space={2} position="relative" p={3}>
@@ -112,7 +110,6 @@ const Design = ({route}) => {
         width="100%"
         bg="white"
         p="4"
-        shadow={2}
         _text={{
           fontSize: 'md',
           fontWeight: 'bold',
